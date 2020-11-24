@@ -6,10 +6,16 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database')
 
+mongoose.Promise = global.Promise;
+
 mongoose.connect(config.database, { useUnifiedTopology: true , useNewUrlParser: true });
 
 mongoose.connection.on('DB connected', () => {
     console.log('DB connected successfully ' + config.database)
+});
+
+mongoose.connection.on('DB error', (err) => {
+    console.log('DB error ' + err)
 });
 
 const app = express();
@@ -23,6 +29,9 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'client')));
 
 app.use(bodyParser.json());
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/users', users);
 
