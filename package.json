@@ -8,6 +8,7 @@
     "start": "node app"
   },
   "dependencies": {
+    "@full-fledged/alerts": "^11.0.0",
     "bcrypt": "^5.0.0",
     "bcryptjs": "*",
     "body-parser": "*",
@@ -16,7 +17,8 @@
     "jsonwebtoken": "*",
     "mongoose": "*",
     "passport": "*",
-    "passport-jwt": "*"
+    "passport-jwt": "*",
+    "tslib": "^2.0.3"
   },
   "author": "Wojciech Sebestowicz",
   "license": "ISC"
